@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SKYWIRE — Live Weather Terminal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Grain texture overlay -->
+  <div class="noise"></div>
+
+  <div class="wrap">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="logo">SKYWIRE</div>
+      <div class="tagline">live weather terminal</div>
+    </div>
+
+    <!-- Search bar -->
+    <div class="search-row">
+      <input type="text" id="city-input" placeholder="enter city name..." autocomplete="off" />
+      <button class="search-btn" onclick="fetchWeather()">SCAN</button>
+    </div>
+
+    <!-- Error message -->
+    <div class="error-msg" id="err">⚠ city not found — check spelling and retry</div>
+
+    <!-- Loading indicator -->
+    <div class="loading" id="loading">ACQUIRING SIGNAL...</div>
+
+    <!-- Main weather card (hidden until data loads) -->
+    <div class="card" id="main-card">
+
+      <!-- Location -->
+      <div class="city-name" id="city-name">—</div>
+      <div class="country" id="country-line">—</div>
+
+      <!-- Temperature + weather icon -->
+      <div class="main-row">
+        <div class="temp-big" id="temp-big">—<span class="temp-unit">°C</span></div>
+        <div class="weather-icon" id="weather-icon">—</div>
+      </div>
+
+      <!-- Description -->
+      <div class="desc" id="desc">—</div>
+
+      <!-- Feels like -->
+      <div class="feels-like">
+        <div class="feels-lbl">FEELS LIKE</div>
+        <div class="feels-val" id="feels-val">—°</div>
+      </div>
+
+      <!-- Stats grid -->
+      <div class="grid">
+        <div class="stat">
+          <div class="stat-label">HUMIDITY</div>
+          <div class="stat-val" id="humidity">—<span class="stat-unit">%</span></div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">WIND</div>
+          <div class="stat-val" id="wind">—<span class="stat-unit">km/h</span></div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">PRESSURE</div>
+          <div class="stat-val" id="pressure">—<span class="stat-unit">hPa</span></div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">VISIBILITY</div>
+          <div class="stat-val" id="visibility">—<span class="stat-unit">km</span></div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">CLOUD COVER</div>
+          <div class="stat-val" id="clouds">—<span class="stat-unit">%</span></div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">WIND DIR</div>
+          <div class="stat-val" id="wind-dir">—</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Sunrise & Sunset -->
+      <div class="section-label">DAYLIGHT</div>
+      <div class="sun-row">
+        <div class="sun-item">
+          <div class="sun-time" id="sunrise">—</div>
+          <div class="sun-lbl">SUNRISE</div>
+        </div>
+        <div class="sun-item">
+          <div class="sun-time" id="sunset">—</div>
+          <div class="sun-lbl">SUNSET</div>
+        </div>
+      </div>
+
+      <!-- 5-day forecast -->
+      <div class="section-label" style="margin-bottom:.8rem">5-DAY OUTLOOK</div>
+      <div class="forecast-row" id="forecast-row"></div>
+
+    </div><!-- /.card -->
+
+    <!-- Footer -->
+    <div class="footer">POWERED BY OPENWEATHERMAP · SKYWIRE v1.0</div>
+
+  </div><!-- /.wrap -->
+
+  <script src="app.js"></script>
+</body>
+</html>
